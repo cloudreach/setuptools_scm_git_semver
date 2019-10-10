@@ -40,7 +40,7 @@ def _get_commit_time():
     try:
         commit_time = subprocess.check_output(COMMIT_TIME_ARGS, stderr=subprocess.DEVNULL).strip()
         return dateutil.parser.isoparse(commit_time)
-    except:
+    except Exception:
         # This could happen, e.g., if there are no commits in the repo. We assume other git issues
         # would break before this point and assume that case for the sake of simple error handling.
         return datetime.now()

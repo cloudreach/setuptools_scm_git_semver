@@ -1,11 +1,17 @@
 from setuptools import setup
 
+with open('README.md') as f:
+    long_description = f.read()
+
 setup(
     name='setuptools_scm_git_semver',
     use_scm_version=True,
-    author='Chris Connelly',
-    author_email='chris.connelly@cloudreach.com',
+    author='Cloudreach Software - Conductor',
+    author_email='sw-conductor-dev@cloudreach.com',
     description='SemVer-compatible plugin for setuptools_scm.',
+    long_description=long_description,
+    long_description_content_type='text/markdown',
+    license='MIT',
     packages=['setuptools_scm_git_semver'],
     install_requires=['python-dateutil>=2.8,<3', 'semver>=2.8,<3', 'setuptools_scm>=3.3,<4'],
     setup_requires=['setuptools_scm'],
