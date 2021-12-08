@@ -14,8 +14,12 @@ version scheme and local scheme each:
 
 - `time-dot-node`: Returns a local version of +<time>.<node>
 
+In addition, if a version tag from SCM is not available, the content of
+VERSION.txt is used.
+
 Example configurations to get version numbers that are both valid python
-package versions and SemVer versions:
+package versions and SemVer versions, and fall back on what's in VERSION.txt if
+not in SCM:
 
 Using pyproject.toml:
 
@@ -32,6 +36,7 @@ build-backend = 'setuptools.build_meta'
 version_scheme = "guess-next-rc"
 local_scheme = "time-dot-node"
 normalize = false
+write_to = "VERSION.txt"
 ```
 
 ## Releases

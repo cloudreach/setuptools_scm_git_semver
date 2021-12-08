@@ -8,6 +8,10 @@ def no_version(*args):
 
 
 class TestIntegrationWithSetuptoolsScm:
+    # There seems to be no practical way to test that the fallback parser gets
+    # called when .git is missing, short of patching stuff inside
+    # setuptools_scm, so... let's not.
+
     @pytest.mark.parametrize(
         "versions",
         (
