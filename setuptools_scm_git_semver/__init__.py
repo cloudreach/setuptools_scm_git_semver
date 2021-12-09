@@ -1,4 +1,5 @@
 import re
+from pathlib import Path
 from typing import NamedTuple, Optional, Sequence, Tuple
 
 import setuptools_scm.version
@@ -104,3 +105,12 @@ def local_time_dot_node(version: setuptools_scm.version.ScmVersion) -> str:
     return str(
         version.format_with("+{time:{time_format}}.{node}", time_format=time_format)
     )
+
+
+def parse_version_txt(root, config=None) -> Optional[setuptools_scm.version.ScmVersion]:
+    """Return the version number from VERSION.txt."""
+    # Unfortunately, VERSION.txt has to be hard-coded due to the way that entry
+    # points are matched to source trees
+    version_txt = Path(root) / "VERSION.txt"
+    tag = version_txt.read_text()
+    return setuptools_scm.version.meta(tag, preformatted=True, config=config)
